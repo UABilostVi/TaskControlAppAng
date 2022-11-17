@@ -1,0 +1,17 @@
+<h1>Dashboard</h1>
+
+<button ngClass="new-board-button" (click)="createNewBoardModal()">
+  <img src="../../../assets/plus-svgrepo-com.svg">
+  Add New
+</button>
+
+<div ngClass="boards-list">
+  <a ngClass="boards-list__item" *ngFor="let board of boardsList">
+    <h4>{{board.name}}</h4>
+  </a>
+</div>
+
+<ng-template refModalDir></ng-template>
+
+
+

@@ -1,0 +1,19 @@
+.header {
+  background-color: burlywood;
+
+  &-holder {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,22 @@
+.new-board-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.boards-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.boards-list__item {
+  background-color: darkseagreen;
+  padding: 15px;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 10px;
+}
