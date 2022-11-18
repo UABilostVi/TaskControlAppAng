@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NewBoardComponent } from './new-board/new-board.component';
-import { RefDirective } from './dashboard/ref.directive';
+import { BoardComponent } from './board/board.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,10 +12,11 @@ import { RefDirective } from './dashboard/ref.directive';
     DashboardComponent,
     ErrorPageComponent,
     NewBoardComponent,
-    RefDirective
+    BoardComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     DashboardComponent,

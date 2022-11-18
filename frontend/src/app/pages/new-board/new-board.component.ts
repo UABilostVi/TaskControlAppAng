@@ -1,5 +1,7 @@
+import { DashboardComponent } from './../dashboard/dashboard.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TaskService } from './../../task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-board',
@@ -8,15 +10,16 @@ import { TaskService } from './../../task.service';
 })
 export class NewBoardComponent implements OnInit {
 
-  constructor(private taskServise: TaskService,) { }
+  constructor(
+    private taskServise: TaskService,
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() { }
+
+  createNewBoard(text: string) {
+    this.taskServise.createBoard(text).subscribe((res: any) => { 
+      this.router.navigate(['/board', res._id])
+    })
   }
-
-  @Output() close = new EventEmitter<void>()
-
-  createNewBoard() {
-    this.taskServise.createBoard('BRAND NEW')
-  }
-
 }

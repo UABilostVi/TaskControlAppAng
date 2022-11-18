@@ -27,7 +27,7 @@ const getBoards = async (req, res) => {
 };
 
 const getTasks = async (req, res) => {
-  Task.find({boardId: req.params.id}).then((tasks) => {
+  await Task.find({boardId: req.params.id}).then((tasks) => {
     res.send(tasks)
   })
 };
@@ -68,7 +68,7 @@ const deleteBoard = async (req, res) => {
 const getBoard = async (req, res) => {
   Board.findOne({ _id: req.params.id })
     .then((board) => {
-      res.status(200).send({ board })
+      res.status(200).send(board)
     })
 };
 

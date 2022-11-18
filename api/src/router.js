@@ -22,15 +22,15 @@ router.post('/dashboard', asyncWrapper(addBoard));
 
 router.get('/board/:id', asyncWrapper(getBoard));
 
+router.patch('/board/:id', asyncWrapper(updateBoard));
+
+router.delete('/board/:id', asyncWrapper(deleteBoard));
+
 router.get('/board/:id/tasks', asyncWrapper(getTasks)); 
 
 router.post('/board/:id/tasks', asyncWrapper(addTask)); 
 
-router.patch('/board/:id', asyncWrapper(updateBoard));
-
 router.patch('/board/:id/tasks/:taskId', asyncWrapper(updateTask));
-
-router.delete('/board/:id', asyncWrapper(deleteBoard));
 
 router.delete('/board/:id/tasks/:taskId', asyncWrapper(delTask));
 

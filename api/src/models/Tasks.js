@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const taskSchema = mongoose.Schema({
   name: String,
   desc: String,
-  boardId: mongoose.Schema.Types.ObjectId,
+  boardId: String,
   created_date: {
     type: Date,
     required: true,

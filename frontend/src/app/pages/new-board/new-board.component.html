@@ -1,10 +1,9 @@
 <div ngClass="new-board-form__wrapper">
+  <form ngClass="new-board-form">
+    <h2>Create New Board</h2>
+    <input type="text" #inputfield>
+    <input type="button" (click)="createNewBoard(inputfield.value)" value="OK">
+    <input type="button" value="Cancel" routerLink="/">
+  </form>
 </div>
-
-<form ngClass="new-board-form">
-  <h2>Create New Board</h2>
-  <input type="text">
-  <input type="button" value="OK">
-  <input type="button" value="Cancel" (click)="close.emit()">
-</form>
 

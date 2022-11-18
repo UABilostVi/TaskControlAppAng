@@ -1,0 +1,8 @@
+<a routerLink="/dashboard">Go back</a>
+<h2>{{board.name}}</h2>
+<div class="board-wrapper">
+  <div ngClass="board"  *ngFor="let task of taskList">
+    <h3>{{task.name}}</h3>
+    <p>Created at: {{task.created_date}}</p>
+  </div>
+</div>
