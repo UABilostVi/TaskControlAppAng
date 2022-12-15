@@ -1,0 +1,11 @@
+<div ngClass="new-task-form__wrapper">
+  <form [formGroup]="newTaskForm" (ngSubmit)="createNewTask()" ngClass="new-task-form">
+    <h2 ngClass="new-task-form-title">Create New Task</h2>
+    <input ngClass="new-task-input" type="text" ngModel formControlName="name" placeholder="Task name">
+    <input ngClass="new-task-input" type="text" ngModel formControlName="description" placeholder="Task Description">
+    <div ngClass="buttons-wrapper">
+      <button ngClass="new-task-button" [disabled]="newTaskForm.invalid">OK</button>
+      <button ngClass="new-task-button" routerLink="../">CANCEL</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<div ngClass="edit-board-form__wrapper">
+  <form ngClass="edit-board-form" #editBoardForm="ngForm">
+    <h2 ngClass="edit-board-form-title">Edit Board</h2>
+    <input ngClass="edit-board-input" type="text" ngModel name="name" required placeholder="Board name">
+    <input ngClass="edit-board-input" type="text" ngModel name="description" placeholder="Board Description">
+    <div ngClass="buttons-wrapper">
+      <input ngClass="edit-board-button" type="submit" (click)="editClick(editBoardForm)" value="OK">
+      <input ngClass="edit-board-button" type="button" routerLink="/" value="Cancel">
+    </div>
+  </form>
+</div>

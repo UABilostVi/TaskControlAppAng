@@ -8,20 +8,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { StopPropagationDirective } from './stop-propagation.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    StopPropagationDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     PagesModule,
+    SharedModule,
     HttpClientModule,
     RouterModule
   ],
-  entryComponents: [NewBoardComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

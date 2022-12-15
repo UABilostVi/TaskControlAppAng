@@ -1,12 +1,29 @@
 <h1>Dashboard</h1>
-
-<button ngClass="new-board-button" routerLink="new-board">
-  <img src="../../../assets/plus-svgrepo-com.svg">
-  Add New
+<button ngClass="new-board-button" (click)="showNewBoard()">
+  Add New Board
 </button>
 
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+
+<select [(ngModel)]="sortByVal">
+  <option value="name">name</option>
+  <option value="created_date">date</option>
+</select>
+
+<select [(ngModel)]="sortDirVal">
+  <option value="ASC">ASC</option>
+  <option value="DESC">DESC</option>
+</select>
+
+
 <div ngClass="boards-list">
-  <a ngClass="boards-list__item" *ngFor="let board of boardsList" [routerLink]="['/board', board._id, 'tasks']">
-    <h4>{{board.name}}</h4>
-  </a>
+  <div ngClass="boards-list__item" *ngFor="let board of boardsList | filter: serchText | sort: [sortByVal, sortDirVal]" [routerLink]="['/board', board._id, 'tasks']">
+    <h4 ngClass="boards-list__item-name">{{board.name}}</h4>
+    <p>{{board.description}}</p>
+    <button ngClass="boards-list__item-del" (click)="delBoard(board._id)">X</button>
+    <button ngClass="boards-list__item-edit" [routerLink]="['/board', board._id, 'edit-board']">edit</button>
+    <p ngClass="boards-list__item-date">Created at: {{board.created_date | date:'dd.MM.yyyy HH:mm'}}</p>
+  </div>
 </div>
+
+<app-new-board *ngIf="modal" (close)="modal = false"></app-new-board>

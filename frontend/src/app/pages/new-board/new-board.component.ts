@@ -1,7 +1,8 @@
-import { DashboardComponent } from './../dashboard/dashboard.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TaskService } from './../../task.service';
 import { Router } from '@angular/router';
+import { Board } from '../../models/Board.model';
+
 
 @Component({
   selector: 'app-new-board',
@@ -12,14 +13,16 @@ export class NewBoardComponent implements OnInit {
 
   constructor(
     private taskServise: TaskService,
-    private router: Router
+    private router: Router,
   ) { }
+
+  @Output() close = new EventEmitter<void>()
 
   ngOnInit() { }
 
-  createNewBoard(text: string) {
-    this.taskServise.createBoard(text).subscribe((res: any) => { 
-      this.router.navigate(['/board', res._id])
-    })
+  createNewBoard(form) {
+    this.taskServise.createBoard(form.value.name, form.value.description).subscribe((newBoard: Board) => { 
+      this.router.navigate(['/board', newBoard._id, 'tasks'])
+    })    
   }
 }

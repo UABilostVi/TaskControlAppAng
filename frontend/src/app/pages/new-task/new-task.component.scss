@@ -1,4 +1,4 @@
-.new-board-form__wrapper {
+.new-task-form__wrapper {
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -7,7 +7,7 @@
   right: 0;
 }
 
-.new-board-form {
+.new-task-form {
   border-radius: 10px;
   margin: 0 auto;
   position: absolute;
@@ -19,13 +19,13 @@
   padding: 25px;
 }
 
-.new-board-button {
+.new-task-button {
   padding: 5px;
   border-radius: 3px;
   border: 1px solid;
 }
 
-.new-board-form-title {
+.new-task-form-title {
   text-align: center;
 }
 
@@ -33,7 +33,7 @@ label {
   display: block;
 }
 
-.new-board-input {
+.new-task-input {
   display: block;
   width: 100%;
   margin-bottom: 15px;

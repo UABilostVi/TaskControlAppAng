@@ -1,0 +1,11 @@
+<div ngClass="edit-task-form__wrapper">
+  <form ngClass="edit-task-form" #editTaskForm="ngForm">
+    <h2 ngClass="edit-task-form-title">Edit task</h2>
+    <input ngClass="edit-task-input" type="text" ngModel name="name" required placeholder="task name">
+    <input ngClass="edit-task-input" type="text" ngModel name="description" placeholder="task Description">
+    <div ngClass="buttons-wrapper">
+      <input ngClass="edit-task-button" type="submit" (click)="editClick(editTaskForm)" value="OK">
+      <input ngClass="edit-task-button" type="button" routerLink="/" value="Cancel">
+    </div>
+  </form>
+</div>

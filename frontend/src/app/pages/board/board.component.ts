@@ -1,6 +1,7 @@
 import { TaskService } from './../../task.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Board } from '../../models/Board.model';
 
 @Component({
   selector: 'app-board',
@@ -14,18 +15,22 @@ export class BoardComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  taskList: any;
-  board: any = {};
+  board: Board = new Board;
+  serchText: string = '';
+  sortByVal: string = 'created_date';
+  sortDirVal: string = 'ASC';
+  sortStatus: string = '';
 
   ngOnInit() {
 
     this.route.params.subscribe((params) => {
-      this.taskService.getTasks(params['id']).subscribe((taskList: any) => {
-        this.taskList = taskList;
-      });
-      this.taskService.getBoard(params['id']).subscribe((board: any) => {
+      this.taskService.getBoard(params['id']).subscribe((board: Board) => {
         this.board = board;
       })
-    })
+    })    
+  }
+
+  onSearchTextEntered(searchVal: string) {
+    this.serchText = searchVal
   }
 }

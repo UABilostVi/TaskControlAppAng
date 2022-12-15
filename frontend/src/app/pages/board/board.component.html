@@ -1,8 +1,27 @@
 <a routerLink="/dashboard">Go back</a>
-<h2>{{board.name}}</h2>
-<div class="board-wrapper">
-  <div ngClass="board"  *ngFor="let task of taskList">
-    <h3>{{task.name}}</h3>
-    <p>Created at: {{task.created_date}}</p>
-  </div>
+
+<h1>{{board.name}}</h1>
+
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+
+<select [(ngModel)]="sortByVal">
+  <option value="name">name</option>
+  <option value="created_date">date</option>
+</select>
+
+<select [(ngModel)]="sortDirVal">
+  <option value="ASC">ASC</option>
+  <option value="DESC">DESC</option>
+</select>
+
+<button [routerLink]="['/board', board._id, 'edit-board']">Edit board</button>
+<h4>{{board.description}}</h4>
+<button routerLink="new-task">ADD NEW TASK</button>
+
+<div class="task-wrapper">
+
+  <app-task-list-status [taskStatus]="'new'" [sortByValue]='sortByVal' [sortDirValue]='sortDirVal'></app-task-list-status>
+  <app-task-list-status [taskStatus]="'inProgress'" [sortByValue]='sortByVal' [sortDirValue]='sortDirVal'></app-task-list-status>
+  <app-task-list-status [taskStatus]="'done'" [sortByValue]='sortByVal' [sortDirValue]='sortDirVal'></app-task-list-status>
+
 </div>

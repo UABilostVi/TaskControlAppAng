@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const taskSchema = mongoose.Schema({
   name: String,
-  desc: String,
+  description: String,
   boardId: String,
-  created_date: {
-    type: Date,
-    required: true,
+  created_date: Date,
+  completed: {
+    type: Boolean,
+    default: false,
   },
-  logs: {
-    type: Object
-  }
+  status: String,
+  logs: Object
 });
 
 const Task = mongoose.model('task', taskSchema);

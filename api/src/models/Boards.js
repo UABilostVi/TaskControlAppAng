@@ -2,13 +2,9 @@ const mongoose = require('mongoose');
 
 const boardSchema = mongoose.Schema({
   name: String,
-  created_date: {
-    type: Date,
-    required: true,
-  },
-  logs: {
-    type: Object
-  }
+  description: String,
+  created_date: Date,
+  logs:  Object
 });
 
 const Board = mongoose.model('board', boardSchema);

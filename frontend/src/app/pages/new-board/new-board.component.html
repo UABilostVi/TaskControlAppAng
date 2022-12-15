@@ -1,9 +1,11 @@
 <div ngClass="new-board-form__wrapper">
-  <form ngClass="new-board-form">
-    <h2>Create New Board</h2>
-    <input type="text" #inputfield>
-    <input type="button" (click)="createNewBoard(inputfield.value)" value="OK">
-    <input type="button" value="Cancel" routerLink="/">
+  <form ngClass="new-board-form" (ngSubmit)="createNewBoard(newBoardForm)" #newBoardForm="ngForm">
+    <h2 ngClass="new-board-form-title">Create New Board</h2>
+    <input ngClass="new-board-input" type="text" ngModel name="name" required placeholder="Board name">
+    <input ngClass="new-board-input" type="text" ngModel name="description" placeholder="Board Description">
+    <div ngClass="buttons-wrapper">
+      <input ngClass="new-board-button" type="submit" value="OK" [disabled]="!newBoardForm.valid">
+      <input ngClass="new-board-button" type="button" (click)="close.emit()" value="Cancel">
+    </div>
   </form>
 </div>
-

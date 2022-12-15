@@ -8,14 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  boardsList: any
+  boardsList: Object[]
+  modal = false;
+  serchText: string ='';
+  sortByVal: string = 'created_date';
+  sortDirVal: string = 'ASC';
 
   constructor(
     private taskServise: TaskService) { }
 
   ngOnInit() {
-    this.taskServise.getBoards().subscribe((boardsList: any) => {      
+    this.taskServise.getBoards().subscribe((boardsList: Object[]) => {
       this.boardsList = boardsList;
     })
+  }
+
+  showNewBoard() {
+    this.modal = true
+  }
+
+  delBoard(boardId: string) {
+    event.stopPropagation();
+    this.taskServise.deleteBoard(boardId).subscribe(() => {
+      this.ngOnInit()
+    })
+  }
+
+  onSearchTextEntered(searchVal: string) {
+    this.serchText = searchVal
   }
 }

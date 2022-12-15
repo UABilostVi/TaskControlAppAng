@@ -2,11 +2,12 @@ const { Board } = require('./models/Boards');
 const { Task } = require('./models/Tasks');
 
 const addBoard = async (req, res) => {
-  const { name } = req.body;
+  const { name, desc } = req.body;
   const board = new Board({
     name: name,
-    created_date: new Date().toISOString(),
-    logs: { message: "Board was created", time: new Date().toISOString() }
+    description: desc,
+    created_date: new Date(),
+    logs: { message: "Board was created", time: new Date() }
   });
   board.save().then((listDoc) => {
     return res.status(200).send(listDoc)
@@ -16,7 +17,7 @@ const addBoard = async (req, res) => {
 const updateBoard = async (req, res) => {
   Board.findOneAndUpdate({_id: req.params.id}, {$set: req.body})
     .then(() => {
-      res.sendStatus(200)
+      res.status(200).json('UPD')
     })
 };
 
@@ -35,9 +36,11 @@ const getTasks = async (req, res) => {
 const addTask = async (req, res) => {
   let newTask = new Task({
     name: req.body.name,
+    description: req.body.description,
     boardId: req.params.id,
-    created_date: new Date().toISOString(),
-    logs: { message: "Task was created", time: new Date().toISOString() }
+    created_date: new Date(),
+    status: 'new',
+    logs: { message: "Task was created", time: new Date()}
   });
   newTask.save().then((newTaskDoc) => {
     res.send(newTaskDoc)
@@ -47,7 +50,7 @@ const addTask = async (req, res) => {
 const updateTask = async (req, res) => {
   Task.findOneAndUpdate({_id: req.params.taskId}, {$set: req.body})
   .then(() => {
-    res.sendStatus(200)
+    res.status(200).json("Updated")
   })
 };
 

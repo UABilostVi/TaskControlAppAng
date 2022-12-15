@@ -1,0 +1,10 @@
+<h3>{{taskStatus}}</h3>
+<div ngClass="task"
+  *ngFor="let task of taskList | statusFilter: taskStatus | filter: serchText | sort: [sortByValue, sortDirValue] ">
+  <h3>{{task.name}}</h3>
+  <button ngClass="edit-button" [routerLink]="['/board', board._id,'tasks', task._id ,'edit-task']">Edit
+    task</button>
+  <button ngClass="delete-button" (click)="deleteTask(task)">X</button>
+  <p>{{task.description}}</p>
+  <p>Created at: {{task.created_date | date:'dd.MM.yyyy HH:mm'}}</p>
+</div>
